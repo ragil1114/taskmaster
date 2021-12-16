@@ -61,7 +61,7 @@ $(".list-group").on("click", "p", function() {
   textInput.trigger("focus");
 });
 
-// blur event listener (callback)
+// blur event listener (to edit task description)
 $(".list-group").on("blur", "textarea", function() {
   // get the textarea's current value/text
   var text = $(this)
@@ -90,6 +90,35 @@ $(".list-group").on("blur", "textarea", function() {
 
   // replace textarea with new content
   $(this).replaceWith(taskP);
+
+  // recreate span element with bootstrap classes
+  var taskSpan = $("<span>")
+    .addClass("badge badge-primary badge-pill")
+    .text(date);
+
+  // replace input with span element
+  $(this).replaceWith(taskSpan);
+});
+
+
+// due date was clicked (to edit task date)
+$(".list-group").on("click", "span", function() {
+  // get current text
+  var date = $(this)
+    .text()
+    .trim();
+
+  // create new input element
+  var dateInput = $("<input>")
+    .attr("type", "text")
+    .addClass("form-control")
+    .val(date);
+
+  // swap out elements
+  $(this).replaceWith(dateInput);
+
+  // automatically focus on new element
+  dateInput.trigger("focus");
 });
 
 
