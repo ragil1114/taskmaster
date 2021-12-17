@@ -83,7 +83,7 @@ $(".list-group").on("blur", "textarea", function() {
   tasks[status][index].text = text;
   saveTasks();
 
-  // recreate p element
+  // recreate <p> element
   var taskP = $("<p>")
     .addClass("m-1")
     .text(text);
