@@ -112,6 +112,11 @@ $("#trash").droppable({
   }
 });
 
+// convert text field into a jquery date picker
+$("#modalDueDate").datepicker({
+  minDate: 1
+});
+
 
 // modal was triggered
 $("#task-form-modal").on("show.bs.modal", function() {
