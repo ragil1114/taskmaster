@@ -134,11 +134,11 @@ $("#trash").droppable({
   }
 });
 
+
 // convert text field into a jquery date picker
 $("#modalDueDate").datepicker({
   minDate: 1
 });
-
 
 // modal was triggered
 $("#task-form-modal").on("show.bs.modal", function() {
@@ -263,5 +263,14 @@ $("#remove-tasks").on("click", function() {
   saveTasks();
 });
 
+
 // load tasks for the first time
 loadTasks();
+
+
+// audit task due dates every 30 minutes
+setInterval(function () {
+  $(".card .list-group-item").each(function(index, el) {
+    auditTask(el);
+  });
+}, 1800000);
